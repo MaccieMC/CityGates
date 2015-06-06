@@ -1,0 +1,273 @@
+name: CityGates
+main: dk.citygates.CityGates
+version: 2.0.0
+dev-url: http://dev.bukkit.org/server-mods/citygates/
+website: http://dev.bukkit.org/server-mods/citygates/
+author: Deahtlykiller
+
+commands:
+    gcreate:
+        description: create a <animation> gate
+        usage: /<command> [gate name] <direction:north/east/south/west/up/down>
+        
+    gsetanimation:
+        description: convert gate to an animation gate
+        usage: /<command> [gate]  <direction:north/east/south/west/up/down>
+        
+    gchangeblocks:
+        description: change the blocks of an gate
+        usage: /<command> [gate] [state:open/close] <children>
+        
+    gchangeblock:
+        description: change the blocks of an gate
+        usage: /<command> [gate] [state:open/close] <children>
+    
+    gp1:
+        description: select point 1
+        usage: /<command>
+    
+    gp2:
+        description: select point 2
+        usage: /<command>
+        
+    gshow:
+        description: show selection
+        usage: /<command>
+    
+    gopen:
+        description: open gate
+        usage: /<command> [gate]
+      
+    gclose:
+        description: close gate
+        usage: /<command> [gate]
+        
+    glist:
+        description: list all the gates
+        usage: /<command>
+        
+    ginfo:
+        description: details about a gate or group
+        usage: /<command> [gate]
+        
+    gdelete:
+        description: delete a gate <with children>
+        usage: /<command> [gate] <type:none/all>
+        
+    ggroup:
+        description: group commands
+        usage: /<command> [subcmd:create/delete/add/remove/delay] <args>
+        
+    gperm:
+        description: set permission to a gate
+        usage: /<command> [gate] [type:all/open/close/kill/button] [true/false]
+        
+    gprotect:
+        description: protect a gate against griefing (default = true)
+        usage: /<command> [gate] [true/false]
+        
+    gtimer:
+        description: timegate commands
+        usage: /<command> [subcmd:add/remove/opentime/closetime] [gate] <args>
+        
+    gbutton:
+        description: add/remove button listener
+        usage: /<command> [add/remove/delay] [gate] <args>
+        
+    gredstone:
+        description: add/remove redstone listener
+        usage: /<command> [add/remove] [gate]
+        
+    gkill:
+        description: open gate when a mob is killed
+        usage: /<command> [set/remove/location/message] [gate] <args>
+        
+    gsave:
+        description: force save
+        usage: /<command> <gate>
+        
+    greload:
+        description: force reload
+        usage: /<command> <gate>
+        
+    gdebug:
+        description: debug command
+        usage: /<command> <subcmd>
+        
+permissions:
+    citygates.admin.*:
+        children:
+            citygates.admin.create: true
+            citygates.admin.delete: true
+            citygates.admin.setanimation: true
+            citygates.admin.changeblocks: true
+            citygates.admin.perm: true
+            citygates.admin.protect: true
+            citygates.admin.group.create: true
+            citygates.admin.group.delete: true
+            citygates.admin.group.add: true
+            citygates.admin.group.remove: true
+            citygates.admin.group.delay: true
+            citygates.admin.button.add: true
+            citygates.admin.button.remove: true
+            citygates.admin.button.delay: true
+            citygates.admin.kill.set: true
+            citygates.admin.kill.remove: true
+            citygates.admin.kill.loc: true
+            citygates.admin.kill.msg: true
+            citygates.admin.redstone.add: true
+            citygates.admin.redstone.remove: true
+            citygates.admin.timer.add: true
+            citygates.admin.timer.remove: true
+            citygates.admin.timer.open: true
+            citygates.admin.timer.close: true
+            citygates.admin.load: true
+            citygates.admin.save: true
+            
+            citygates.user.open: true
+            citygates.user.close: true
+            citygates.user.button: true
+            citygates.user.kill: true
+            citygates.user.list: true
+            citygates.user.info: true
+            citygates.user.interact.*: true
+            
+    citygates.user.*:
+        children:
+            citygates.admin.create: false
+            citygates.admin.delete: false
+            citygates.admin.setanimation: false
+            citygates.admin.changeblocks: false
+            citygates.admin.perm: false
+            citygates.admin.protect: false
+            citygates.admin.group.create: false
+            citygates.admin.group.delete: false
+            citygates.admin.group.add: false
+            citygates.admin.group.remove: false
+            citygates.admin.group.delay: false
+            citygates.admin.button.add: false
+            citygates.admin.button.remove: false
+            citygates.admin.button.delay: false
+            citygates.admin.kill.set: false
+            citygates.admin.kill.remove: false
+            citygates.admin.kill.loc: false
+            citygates.admin.kill.msg: false
+            citygates.admin.redstone.add: false
+            citygates.admin.redstone.remove: false
+            citygates.admin.timer.add: false
+            citygates.admin.timer.remove: false
+            citygates.admin.timer.open: false
+            citygates.admin.timer.close: false
+            citygates.admin.load: false
+            citygates.admin.save: false
+            
+            citygates.user.open: true
+            citygates.user.close: true
+            citygates.user.button: true
+            citygates.user.kill: true
+            citygates.user.list: true
+            citygates.user.info: true
+            citygates.user.interact.*: false
+    citygates.admin.group.*:
+        children:
+            citygates.admin.group.create: true
+            citygates.admin.group.delete: true
+            citygates.admin.group.add: true
+            citygates.admin.group.remove: true
+            citygates.admin.group.delay: true
+            
+    citygates.admin.button.*:
+        children:
+            citygates.admin.button.add: true
+            citygates.admin.button.remove: true
+            citygates.admin.button.delay: true
+            
+    citygates.admin.redstone.*:
+        children:
+            citygates.admin.redstone.add: true
+            citygates.admin.redstone.remove: true
+            
+    citygates.admin.kill.*:
+        children:
+            citygates.admin.kill.set: true
+            citygates.admin.kill.remove: true
+            citygates.admin.kill.loc: true
+            citygates.admin.kill.msg: true
+            
+    citygates.admin.timer.*:
+        children:
+            citygates.admin.timer.add: true
+            citygates.admin.timer.remove: true
+            citygates.admin.timer.open: true
+            citygates.admin.timer.close: true
+        
+    citygates.admin.create:
+        default: op
+    citygates.admin.delete:
+        default: op
+    citygates.admin.perm:
+        default: op
+    citygates.admin.protect:
+        default: op
+    citygates.admin.setanimation:
+        default: op
+    citygates.admin.changeblocks:
+        default: op
+        
+    citygates.user.open:
+        default: op
+    citygates.user.close:
+        default: op
+    citygates.user.button:
+        default: op
+    citygates.user.kill:
+        default: op
+    citygates.user.list:
+        default: op
+    citygates.user.info:
+        default: op
+        
+    citygates.admin.group.delete:
+        default: op
+    citygates.admin.group.add:
+        default: op
+    citygates.admin.group.remove:
+        default: op
+    citygates.admin.group.delay:
+        default: op
+            
+    citygates.admin.button.add:
+        default: op
+    citygates.admin.button.remove:
+        default: op
+    citygates.admin.button.delay:
+        default: op
+        
+    citygates.admin.kill.set:
+        default: op
+    citygates.admin.kill.remove:
+        default: op
+    citygates.admin.kill.loc:
+        default: op
+    citygates.admin.kill.msg:
+        default: op
+        
+    citygates.admin.redstone.add:
+        default: op
+    citygates.admin.redstone.remove:
+        default: op
+        
+    citygates.admin.timer.add:
+        default: op
+    citygates.admin.timer.remove:
+        default: op
+    citygates.admin.timer.open:
+        default: op
+    citygates.admin.timer.close:
+        default: op
+        
+    citygates.admin.load:
+        default: op
+    citygates.admin.save:
+        default: op
+            
